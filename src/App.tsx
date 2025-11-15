@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import axios from "axios";
 
 function App() {
+  const [message, setMessage] = useState<string>("(niciun mesaj inca)");
+
+  const callBackend = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/api/hello");
+      setMessage(response.data);
+    } catch (error) {
+      console.error(error);
+      setMessage("Eroare la apelul catre backend");
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ padding: "20px" }}>
+      <h1>Mini Twitter - test conexiune</h1>
+      <button onClick={callBackend}>Cheama backendul</button>
+      <p>Raspuns backend: {message}</p>
     </div>
   );
 }
