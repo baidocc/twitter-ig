@@ -1,26 +1,30 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
 
-function App() {
-  const [message, setMessage] = useState<string>("(niciun mesaj inca)");
-
-  const callBackend = async () => {
-    try {
-      const response = await axios.get("http://localhost:8080/api/hello");
-      setMessage(response.data);
-    } catch (error) {
-      console.error(error);
-      setMessage("Eroare la apelul catre backend");
-    }
-  };
-
+const App: React.FC = () => {
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Mini Twitter - test conexiune</h1>
-      <button onClick={callBackend}>Cheama backendul</button>
-      <p>Raspuns backend: {message}</p>
-    </div>
+    <Router>
+      <nav
+        style={{
+          padding: "10px",
+          background: "#eee",
+          display: "flex",
+          justifyContent: "center",
+          gap: "16px",
+        }}
+      >
+        <Link to="/register">Register</Link>
+        <Link to="/login">Login</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
