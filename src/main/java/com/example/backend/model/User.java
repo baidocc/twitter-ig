@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -18,17 +19,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    @NotBlank (message = "Username este obligatoriu")
+    @Column(nullable = false, unique = true, length = 20)
+    @NotBlank (message = "The Username field is mandatory")
+    @Size(max = 20, message = "The username can't be longer than 20 characters")
     private String username;
 
     @Column(nullable = false, unique = true)
-    @Email( message = "Email invalid")
-    @NotBlank (message = "Emailul este obligatoriu")
+    @Email( message = "Invalid Email")
+    @NotBlank (message = "The Email field is mandatory")
     private String email;
 
     @Column(nullable = false)
-    @NotBlank (message = "Parola este obligatorie")
+    @NotBlank (message = "The Password field is mandatory")
     private String passwordHash;
 
     @Enumerated(EnumType.STRING)
