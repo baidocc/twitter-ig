@@ -9,6 +9,11 @@ import java.time.LocalDateTime;
 @Table(name = "users")
 public class User {
 
+    public enum Role {
+        USER,
+        ADMIN
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,6 +30,10 @@ public class User {
     @Column(nullable = false)
     @NotBlank (message = "Parola este obligatorie")
     private String passwordHash;
+
+    @Enumerated(EnumType.STRING)
+    @Column (nullable = false)
+    private Role role = Role.USER; // default: toti userii noi sunt USER
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
