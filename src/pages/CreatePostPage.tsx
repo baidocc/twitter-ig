@@ -8,15 +8,14 @@ const CreatePostPage: React.FC = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState(""); // <-- Statut nou pentru erori
 
-  // temporar, userId hardcodat (pana ai login)
-  const userId = 1;
+  
 
   const handleAddPost = async (e: React.FormEvent) => {
     e.preventDefault();
     setMessage("");
 
     try {
-      await api.post("/post/create", { title, body, userId });
+      await api.post("/post/create", { title, body });
       setMessage("Post adaugat cu succes!");
       setTitle("");
       setBody("");
@@ -26,7 +25,7 @@ const CreatePostPage: React.FC = () => {
         ? JSON.stringify(err.response.data)
         : "Eroare la adaugarea postului";
       setError(errorMessage); // Setează mesajul de eroare
-     
+    
     }
   };
 
