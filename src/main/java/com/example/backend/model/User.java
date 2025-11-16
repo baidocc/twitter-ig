@@ -20,17 +20,17 @@ public class User {
     private Long id;
 
     @Column(nullable = false, unique = true, length = 20)
-    @NotBlank (message = "The Username field is mandatory")
-    @Size(max = 20, message = "The username can't be longer than 20 characters")
+    @NotBlank 
+    @Size(max = 20)
     private String username;
 
     @Column(nullable = false, unique = true)
-    @Email( message = "Invalid Email")
-    @NotBlank (message = "The Email field is mandatory")
+    @Email
+    @NotBlank 
     private String email;
 
     @Column(nullable = false)
-    @NotBlank (message = "The Password field is mandatory")
+    @NotBlank 
     private String passwordHash;
 
     @Enumerated(EnumType.STRING)

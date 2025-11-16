@@ -6,15 +6,16 @@ import jakarta.validation.constraints.Size;
 
 public class RegisterRequest {
 
-    @NotBlank(message = "Username este obligatoriu")
+    @NotBlank(message = "The Username field is mandatory")
+    @Size(max = 20, message = "The username can't be longer than 20 characters")
     private String username;
 
-    @NotBlank(message = "Emailul este obligatoriu")
-    @Email(message = "Email invalid")
+    @NotBlank(message = "The Email field is mandatory")
+    @Email(message = "Invalid Email")
     private String email;
 
-    @NotBlank(message = "Parola este obligatorie")
-    @Size(min = 6, message = "Parola trebuie sa aiba minim 6 caractere")
+    @NotBlank(message = "The Password field is mandatory")
+    @Size(min = 6, message = "The Password needs to be at least 6 characters long")
     private String password;
 
     public RegisterRequest() {
