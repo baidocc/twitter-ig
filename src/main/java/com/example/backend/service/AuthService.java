@@ -39,20 +39,5 @@ public class AuthService {
         userRepository.save(user);
     }
 
-    public void login(LoginRequest request) {
-        User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("Invalid credentials"));
-
-        boolean matches = passwordEncoder.matches(
-                request.getPassword(),
-                user.getPasswordHash()
-        );
-
-        if (!matches) {
-            throw new RuntimeException("Invalid credentials");
-        }
-
-        // deocamdata nu returnam nimic
-        // mai incolo aici vei genera JWT si il vei trimite
-    }
+   
 }
