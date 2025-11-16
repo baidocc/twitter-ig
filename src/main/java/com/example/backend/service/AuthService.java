@@ -21,11 +21,11 @@ public class AuthService {
 
     public void register(RegisterRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email deja folosit");
+            throw new RuntimeException("Email already in use");
         }
 
         if (userRepository.existsByUsername(request.getUsername())) {
-            throw new RuntimeException("Username deja folosit");
+            throw new RuntimeException("Username already in use");
         }
 
         String hashedPassword = passwordEncoder.encode(request.getPassword());
@@ -41,7 +41,7 @@ public class AuthService {
 
     public void login(LoginRequest request) {
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("Credentiale invalide"));
+                .orElseThrow(() -> new RuntimeException("Invalid credentials"));
 
         boolean matches = passwordEncoder.matches(
                 request.getPassword(),
@@ -49,7 +49,7 @@ public class AuthService {
         );
 
         if (!matches) {
-            throw new RuntimeException("Credentiale invalide");
+            throw new RuntimeException("Invalid credentials");
         }
 
         // deocamdata nu returnam nimic

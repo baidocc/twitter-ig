@@ -1,7 +1,6 @@
 package com.example.backend.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 
@@ -15,11 +14,11 @@ public class Post{
     private Long id;
 
     @Column (length = 1000)
-    @Size(max = 1000, message = "The body can't be longer than 1000 characters")
+    @Size(max = 1000)
     private String body;
 
     @Column (length = 100)
-    @Size(max = 100, message = "The title can't be longer than 100 characters")
+    @Size(max = 100)
     private String title;
 
     @ManyToOne
