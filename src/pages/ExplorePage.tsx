@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../api"; // acelasi api folosit si la register/login
 import "../design/ExplorePage.css";// <-- 1. IMPORTĂ FIȘIERUL CSS
+import LogoutButton from "../components/LogoutButton";
+
+
 
 interface Post {
   id: number;
@@ -59,28 +62,32 @@ const ExplorePage: React.FC = () => {
 
   // Afișăm postările
   return (
-    // 2. APLICĂ CLASELE CSS
-    <div className="explore-container">
+  <div className="explore-container">
+    <div className="explore-header">
       <h2>Explore</h2>
-
-      {posts.length === 0 ? (
-        <p className="status-message">There are no posts live at the moment.</p>
-      ) : (
-        <section className="posts-list">
-          {posts.map((post) => (
-            <article key={post.id} className="post-article">
-              <h3>{post.title}</h3>
-              <p>{post.body}</p>
-              <small>
-                Posed by: <strong>{post.username}</strong> at{" "}
-                {new Date(post.createdAt).toLocaleString("ro-RO")}
-              </small>
-            </article>
-          ))}
-        </section>
-      )}
+      <LogoutButton />
     </div>
-  );
+
+    {/* Aici afisam postarile */}
+    {posts.length === 0 ? (
+      <p className="status-message">There are no posts live at the moment.</p>
+    ) : (
+      <section className="posts-list">
+        {posts.map((post) => (
+          <article key={post.id} className="post-article">
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
+            <small>
+              Posted by: <strong>{post.username}</strong> at{" "}
+              {new Date(post.createdAt).toLocaleString("ro-RO")}
+            </small>
+          </article>
+        ))}
+      </section>
+    )}
+  </div>
+);
+
 };
 
 export default ExplorePage;

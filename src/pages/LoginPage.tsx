@@ -1,21 +1,34 @@
 import React, { useState } from "react";
 import { api } from "../api";
-import "../design/LoginPage.css";// <-- 1. IMPORTĂ FIȘIERUL CSS
+import "../design/LoginPage.css";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [isError, setIsError] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setMessage("");
+    setIsError(false);
+
     try {
       const response = await api.post("/auth/login", {
         email,
         password,
       });
-      setMessage(response.data);
+
+      const token = response.data.token;
+
+      // salvam tokenul pentru requesturile viitoare
+      sessionStorage.setItem("token", token);
+
+      setMessage("Autentificare reusita!");
+      setIsError(false);
     } catch (err: any) {
+      console.error("Eroare login:", err);
+      setIsError(true);
       setMessage(
         err.response?.data
           ? JSON.stringify(err.response.data)
@@ -25,7 +38,6 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    // 4. Aplică clasele CSS și elimină stilurile inline
     <div className="login-container">
       <form onSubmit={handleLogin} className="login-form">
         <h2>Autentificare</h2>
@@ -48,12 +60,10 @@ const LoginPage: React.FC = () => {
 
         <button type="submit">Login</button>
 
-        {/* 5. Afișează mesajele stilizate */}
         {message && (
-          <p className="form-message success">{message}</p>
-        )}
-        {message && (
-          <p className="form-message error">{message}</p>
+          <p className={`form-message ${isError ? "error" : "success"}`}>
+            {message}
+          </p>
         )}
       </form>
     </div>
