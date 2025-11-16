@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { api } from "../api"; // acelasi api folosit si la register/login
+import "../design/CreatePostPage.css";// <-- 1. IMPORTĂ FIȘIERUL CSS
 
 const CreatePostPage: React.FC = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [message, setMessage] = useState("");
+  const [error, setError] = useState(""); // <-- Statut nou pentru erori
 
   // temporar, userId hardcodat (pana ai login)
   const userId = 1;
@@ -20,32 +22,18 @@ const CreatePostPage: React.FC = () => {
       setBody("");
     } catch (err: any) {
       console.error("Eroare la adaugare post:", err);
-      setMessage(
-        err.response?.data
-          ? JSON.stringify(err.response.data)
-          : "Eroare la adaugarea postului"
-      );
+      const errorMessage = err.response?.data
+        ? JSON.stringify(err.response.data)
+        : "Eroare la adaugarea postului";
+      setError(errorMessage); // Setează mesajul de eroare
+     
     }
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        minHeight: "100vh",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <form
-        onSubmit={handleAddPost}
-        style={{
-          width: "400px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-        }}
-      >
+    // 2. APLICĂ CLASELE CSS
+    <div className="create-post-container">
+      <form onSubmit={handleAddPost} className="create-post-form">
         <h2>Adauga un post nou</h2>
 
         <input
@@ -66,8 +54,12 @@ const CreatePostPage: React.FC = () => {
 
         <button type="submit">Publica postarea</button>
 
+        {/* Afișează mesajul de succes sau de eroare */}
         {message && (
-          <p style={{ color: "green", wordBreak: "break-word" }}>{message}</p>
+          <p className="form-message success">{message}</p>
+        )}
+        {error && (
+          <p className="form-message error">{error}</p>
         )}
       </form>
     </div>

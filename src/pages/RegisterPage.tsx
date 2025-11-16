@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { api } from "../api";
+import "../design/RegisterPage.css";// <-- 1. IMPORTĂ FIȘIERUL CSS
 
 const RegisterPage: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -26,23 +27,9 @@ const RegisterPage: React.FC = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        minHeight: "100vh",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <form
-        onSubmit={handleRegister}
-        style={{
-          width: "320px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-        }}
-      >
+    // 5. Aplică clasele CSS și elimină stilurile inline
+    <div className="register-container">
+      <form onSubmit={handleRegister} className="register-form">
         <h2>Inregistrare</h2>
 
         <input
@@ -71,8 +58,12 @@ const RegisterPage: React.FC = () => {
 
         <button type="submit">Creeaza cont</button>
 
+        {/* 6. Afișează mesajele stilizate */}
         {message && (
-          <p style={{ color: "green", wordBreak: "break-word" }}>{message}</p>
+          <p className="form-message success">{message}</p>
+        )}
+        {message && (
+          <p className="form-message error">{message}</p>
         )}
       </form>
     </div>

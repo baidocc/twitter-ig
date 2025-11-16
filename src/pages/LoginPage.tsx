@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { api } from "../api";
+import "../design/LoginPage.css";// <-- 1. IMPORTĂ FIȘIERUL CSS
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -24,23 +25,9 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        minHeight: "100vh",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <form
-        onSubmit={handleLogin}
-        style={{
-          width: "320px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-        }}
-      >
+    // 4. Aplică clasele CSS și elimină stilurile inline
+    <div className="login-container">
+      <form onSubmit={handleLogin} className="login-form">
         <h2>Autentificare</h2>
 
         <input
@@ -61,8 +48,12 @@ const LoginPage: React.FC = () => {
 
         <button type="submit">Login</button>
 
+        {/* 5. Afișează mesajele stilizate */}
         {message && (
-          <p style={{ color: "green", wordBreak: "break-word" }}>{message}</p>
+          <p className="form-message success">{message}</p>
+        )}
+        {message && (
+          <p className="form-message error">{message}</p>
         )}
       </form>
     </div>
