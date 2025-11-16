@@ -14,9 +14,6 @@ public class PostRequest {
     private String body;
 
     
-    private Long userId;
-
-    
     public PostRequest() {
     }
 
@@ -36,12 +33,5 @@ public class PostRequest {
         this.body = body;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
 
 }
