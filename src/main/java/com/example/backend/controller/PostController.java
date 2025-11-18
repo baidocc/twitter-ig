@@ -8,6 +8,8 @@ import com.example.backend.service.PostService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.example.backend.repository.UserRepository;
+import com.example.backend.model.User;
 
 @RestController
 @RequestMapping("/api/post")
@@ -30,9 +32,11 @@ public class PostController {
 
 
     // Toate posturile unui user
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Post>> getAllPostsByUser(@PathVariable Long userId) {
-        List<Post> posts = postService.getAllPostsByUser(userId);
+    @GetMapping("/user/{username}")
+    public ResponseEntity<List<Post>> getAllPostsByUser(@PathVariable Long username) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found: " + username));
+        List<Post> posts = postService.getAllPostsByUser(user);
         return ResponseEntity.ok(posts);
     }
 
