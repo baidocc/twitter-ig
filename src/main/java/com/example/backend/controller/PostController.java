@@ -31,6 +31,16 @@ public class PostController {
 }
 
 
+
+    // Toate posturile mele
+    @GetMapping("/myposts")
+    public ResponseEntity<List<Post>> getAllMyPosts() {
+        
+        List<Post> posts = postService.getAllMyPosts();
+        return ResponseEntity.ok(posts);
+    }
+
+
     // Toate posturile unui user
     @GetMapping("/user/{username}")
     public ResponseEntity<List<Post>> getAllPostsByUser(@PathVariable String username) {

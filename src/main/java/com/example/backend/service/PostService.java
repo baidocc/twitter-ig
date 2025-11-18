@@ -75,4 +75,18 @@ public class PostService {
     }
     
 
+    public List<Post> getAllMyPosts(){
+        // luam userul autenticat din SecurityContext
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+
+        // username-ul la tine e emailul
+        String email = userDetails.getUsername();
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        return postRepository.findByUserOrderByCreatedAtDesc(user);
+    }
+
 }
