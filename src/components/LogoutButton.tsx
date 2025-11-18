@@ -1,7 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const LogoutButton: React.FC = () => {
+interface LogoutButtonProps {
+  className?: string; // <-- acceptă clasa trimisă
+}
+const LogoutButton: React.FC<LogoutButtonProps> = ({ className }) => {
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -9,7 +13,7 @@ const LogoutButton: React.FC = () => {
     navigate("/login");
   };
 
-  return <button onClick={handleLogout}>Logout</button>;
+  return (<button className={className} onClick={handleLogout}>Logout</button>);
 };
 
 export default LogoutButton;

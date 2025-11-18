@@ -33,7 +33,7 @@ const CreatePostPage: React.FC = () => {
     // 2. APLICĂ CLASELE CSS
     <div className="create-post-container">
       <form onSubmit={handleAddPost} className="create-post-form">
-        <h2>Adauga un post nou</h2>
+        <h2 >Adauga un post nou</h2>
 
         <input
           type="text"

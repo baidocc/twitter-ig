@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../api"; // acelasi api folosit si la register/login
 import "../design/ExplorePage.css";// <-- 1. IMPORTĂ FIȘIERUL CSS
-import LogoutButton from "../components/LogoutButton";
-
+import PostCard from "../components/PostCard";
 
 
 interface Post {
@@ -65,7 +64,7 @@ const ExplorePage: React.FC = () => {
   <div className="explore-container">
     <div className="explore-header">
       <h2>Explore</h2>
-      <LogoutButton />
+      
     </div>
 
     {/* Aici afisam postarile */}
@@ -74,14 +73,13 @@ const ExplorePage: React.FC = () => {
     ) : (
       <section className="posts-list">
         {posts.map((post) => (
-          <article key={post.id} className="post-article">
-            <h3>{post.title}</h3>
-            <p>{post.body}</p>
-            <small>
-              Posted by: <strong>{post.username}</strong> at{" "}
-              {new Date(post.createdAt).toLocaleString("ro-RO")}
-            </small>
-          </article>
+          <PostCard
+            key={post.id}
+            title={post.title}
+            body={post.body}
+            username={post.username}
+            createdAt={post.createdAt}
+            />
         ))}
       </section>
     )}

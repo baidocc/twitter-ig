@@ -8,7 +8,7 @@ body {
   align-items: center;
   justify-content: center;
   font-family: Arial, sans-serif;
-   /* Un fundal gri deschis */
+  background-color: #323232;
 
   padding-bottom: 50vh;
 }
@@ -21,7 +21,7 @@ body {
   flex-direction: column;
   gap: 15px; /* Spațiu între elemente */
   padding: 30px;
-  background-color: #ffffff;
+  background-color: #020617;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
@@ -30,7 +30,7 @@ body {
   text-align: center;
   margin-top: 0;
   margin-bottom: 10px;
-  color: #333;
+  color: white;
 }
 
 /* Stil comun pentru input și textarea */
@@ -41,9 +41,10 @@ body {
   font-size: 1em;
   border: 1px solid #ccc;
   border-radius: 4px;
-  /* Asigură că padding-ul nu afectează lățimea totală */
+  background: #323232;
   box-sizing: border-box;
   transition: border-color 0.2s, box-shadow 0.2s;
+  color: white;
 }
 
 /* Stil specific pentru textarea */
@@ -67,7 +68,7 @@ body {
   font-size: 1em;
   font-weight: bold;
   color: #ffffff;
-  background-color: #007bff;
+  background-color: #374151;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -75,7 +76,8 @@ body {
 }
 
 .create-post-form button:hover {
-  background-color: #0056b3; /* O nuanță mai închisă la hover */
+  background-color: #111827; /* O nuanță mai închisă la hover */
+  transform: translateY(-1px);
 }
 
 /* Mesajul de feedback (succes sau eroare) */
@@ -98,3 +100,4 @@ body {
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;
 }
+
