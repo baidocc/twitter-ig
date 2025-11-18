@@ -4,7 +4,7 @@ body {
 
 /* Containerul principal al paginii */
 .explore-container {
-  max-width: 800px;
+  max-width: 600px;
   margin: 20px auto; /* Adaugă spațiu sus/jos și centrează stânga/dreapta */
   padding: 20px;
   font-family: Arial, sans-serif; /* O fontă de bază, curată */

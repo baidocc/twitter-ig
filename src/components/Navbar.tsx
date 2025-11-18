@@ -32,6 +32,13 @@ const Navbar: React.FC = () => {
         >
           Create Post
         </Link>
+
+         <Link
+          to="/my-profile"
+          className={`nav-button nav-main ${isActive("/") ||  isActive("/Explore-Page") ? "active" : ""}`}
+        >
+          My Profile
+        </Link>
       </div>
 
       {/* dreapta – register, login, logout */}

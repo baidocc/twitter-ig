@@ -8,7 +8,7 @@ interface Post {
   id: number;
   title: string;
   body: string;
-  username: string;
+  user_id: string;
   createdAt: string; // JSON va trimite data ca un string
 }
 
@@ -77,7 +77,7 @@ const ExplorePage: React.FC = () => {
             key={post.id}
             title={post.title}
             body={post.body}
-            username={post.username}
+            user_id={post.user_id}
             createdAt={post.createdAt}
             />
         ))}

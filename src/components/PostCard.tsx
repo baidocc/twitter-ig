@@ -5,14 +5,14 @@ import "../design/PostCard.css";
 export interface PostCardProps {
   title: string;
   body: string;
-  username: string;
+  user_id: string;
   createdAt: string; // sau Date in functie de ce primesti
 }
 
 const PostCard: React.FC<PostCardProps> = ({
   title,
   body,
-  username,
+  user_id,
   createdAt,
 }) => {
   const date = new Date(createdAt);
@@ -26,7 +26,7 @@ const PostCard: React.FC<PostCardProps> = ({
       <p className="post-card-body">{body}</p>
 
       <footer className="post-card-footer">
-        <span className="post-card-username">@{username}</span>
+        <span className="post-card-username">@{user_id}</span>
         <span className="post-card-date">
           {date.toLocaleString("ro-RO", {
             year: "numeric",

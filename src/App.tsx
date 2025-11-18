@@ -5,6 +5,8 @@ import LoginPage from "./pages/LoginPage";
 import CreatePostPage from "./pages/CreatePostPage";
 import ExplorePage from "./pages/ExplorePage";
 import Navbar from "./components/Navbar";
+import MyProfilePage from "./pages/MyProfilePage";
+import EditMyProfilePage from "./pages/EditMyProfile";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -18,6 +20,8 @@ const App: React.FC = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/create-post" element={<CreatePostPage />} />
         <Route path="/Explore-Page" element={<ExplorePage />} />
+        <Route path="/my-profile" element={<MyProfilePage />} />
+        <Route path="/edit-profile" element={<EditMyProfilePage />} />
       </Routes>
     </Router>
   );
