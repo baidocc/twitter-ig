@@ -25,9 +25,8 @@ public class ProfileController {
   
     @GetMapping("/{username}")
     public ResponseEntity<Profile> getUserProfile(@PathVariable String username) {
-         User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found: " + username));
-        Profile profile = profileService.getProfileByUser(user);
+        
+        Profile profile = profileService.getProfileByUsername(username);
         return ResponseEntity.ok(profile);
     }
 

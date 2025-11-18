@@ -67,8 +67,8 @@ public class PostService {
         return postRepository.findAllByOrderByCreatedAtDesc();
     }
 
-    public List<Post> getAllPostsByUser(Long userId){
-        User user = userRepository.findById(userId)
+    public List<Post> getAllPostsByUsername(String username){
+        User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         
         return postRepository.findByUserOrderByCreatedAtDesc(user);

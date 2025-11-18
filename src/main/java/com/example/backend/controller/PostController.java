@@ -33,10 +33,9 @@ public class PostController {
 
     // Toate posturile unui user
     @GetMapping("/user/{username}")
-    public ResponseEntity<List<Post>> getAllPostsByUser(@PathVariable Long username) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found: " + username));
-        List<Post> posts = postService.getAllPostsByUser(user);
+    public ResponseEntity<List<Post>> getAllPostsByUser(@PathVariable String username) {
+        
+        List<Post> posts = postService.getAllPostsByUsername(username);
         return ResponseEntity.ok(posts);
     }
 
