@@ -46,6 +46,8 @@ public class PostController {
     public ResponseEntity<List<Post>> getAllPostsByUser(@PathVariable String username) {
         
         List<Post> posts = postService.getAllPostsByUsername(username);
+
+        System.out.println("HIT PostController user=" + username);
         return ResponseEntity.ok(posts);
     }
 

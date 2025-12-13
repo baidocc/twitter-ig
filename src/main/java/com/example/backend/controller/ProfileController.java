@@ -23,10 +23,11 @@ public class ProfileController {
 
     // 1. GET OTHER PROFILE
   
-    @GetMapping("/{username}")
+    @GetMapping("/user/{username}")
     public ResponseEntity<Profile> getUserProfile(@PathVariable String username) {
         
         Profile profile = profileService.getProfileByUsername(username);
+        System.out.println("HIT ProfileController user=" + username);
         return ResponseEntity.ok(profile);
     }
 

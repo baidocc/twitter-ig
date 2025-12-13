@@ -24,6 +24,7 @@ public class ProfileService {
         this.userRepository = userRepository;
     }
 
+    // OTHER PROFILE
     public Profile getProfileByUsername(String username){
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found: " + username));
