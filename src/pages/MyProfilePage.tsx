@@ -90,7 +90,7 @@ const MyProfilePage: React.FC = () => {
     <h3 className="myprofile-posts-title">My posts</h3>
 
     {posts.length === 0 ? (
-      <p className="myprofile-no-posts">NYou don't have any posts yet.</p>
+      <p className="myprofile-no-posts">You don't have any posts yet.</p>
     ) : (
       <div className="myprofile-posts-list">
         {posts.map((post) => (

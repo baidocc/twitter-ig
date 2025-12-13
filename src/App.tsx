@@ -7,6 +7,7 @@ import ExplorePage from "./pages/ExplorePage";
 import Navbar from "./components/Navbar";
 import MyProfilePage from "./pages/MyProfilePage";
 import EditMyProfilePage from "./pages/EditMyProfile";
+import OtherProfilePage from "./pages/OtherProfilePage";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -22,6 +23,8 @@ const App: React.FC = () => {
         <Route path="/Explore-Page" element={<ExplorePage />} />
         <Route path="/my-profile" element={<MyProfilePage />} />
         <Route path="/edit-profile" element={<EditMyProfilePage />} />
+        <Route path="/profile/:username" element={<OtherProfilePage />} /> 
+        
       </Routes>
     </Router>
   );

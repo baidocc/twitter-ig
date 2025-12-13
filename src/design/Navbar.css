@@ -63,3 +63,35 @@
   transform: translateY(-1px);
 }
 
+/* SEARCH */
+.navbar-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* inputul arata ca un nav-button */
+.navbar-search-input {
+  background-color: #374151;
+  border: 1px solid #374151;
+  color: #e5e7eb;
+  cursor: text;
+  width: 160px;
+  padding: 8px 14px;
+}
+
+.navbar-search-input::placeholder {
+  color: #9ca3af;
+}
+
+/* hover identic cu butoanele */
+.navbar-search-input:hover {
+  background-color: #111827;
+}
+
+/* cand scrii */
+.navbar-search-input:focus {
+  outline: none;
+  background-color: #111827;
+  border-color: #374151;
+}
