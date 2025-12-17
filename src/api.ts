@@ -4,15 +4,24 @@ export const api = axios.create({
   baseURL: "http://localhost:8080/api",
 });
 
-
-// interceptor care adauga automat Authorization: Bearer <token>
+// interceptor JWT (UNUL SINGUR)
 api.interceptors.request.use(
   (config) => {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     if (token) {
-      (config.headers = config.headers || {})["Authorization"] = `Bearer ${token}`;
+      config.headers = config.headers || {};
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
   (error) => Promise.reject(error)
 );
+
+export const followUser = async (username: string) => {
+  await api.post(`/follow/${username}`);
+};
+
+export const unfollowUser = async (username: string) => {
+  await api.delete(`/follow/unfollow/${username}`);
+};
+

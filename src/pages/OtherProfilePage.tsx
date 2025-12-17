@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import { api } from "../api";
 import "../design/MyProfilePage.css";
 import PostCard from "../components/PostCard";
+import FollowButton from "../components/FollowButton";
+import UnfollowButton from "../components/UnfollowButton";
+
 
 interface Profile {
   id: number;
@@ -102,6 +105,13 @@ const OtherProfilePage: React.FC = () => {
                 ? profile.description
                 : "This user has no description yet."}
             </div>
+            {username && (
+              <div style={{ display: "flex", gap: "10px", marginTop: "12px" }}>
+                <FollowButton username={username} />
+                <UnfollowButton username={username} />
+              </div>
+)}
+
           </div>
         </div>
 
