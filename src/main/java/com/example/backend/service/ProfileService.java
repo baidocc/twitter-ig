@@ -36,16 +36,21 @@ public class ProfileService {
     public Profile getMyProfile() {
         // Logica e similară tehnic, dar semantic e diferită.
         // Aici știm sigur că userul există (fiindcă e logat cu token valid)
-
-         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("1");
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("2");
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+          System.out.println("3");
 
         // username-ul la tine e emailul
         String email = userDetails.getUsername();
 
+        System.out.println("INAINTE DE EROARE");
+
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Eroare critică: Userul din token nu există în DB."));
 
+                System.out.println("MY PROFILE SERVICE");
         return profileRepository.findByUser(user)
                 .orElseGet(() -> new Profile(user, ""));
     }

@@ -32,12 +32,13 @@ public class FollowingController {
     public ResponseEntity<Void> follow(
             @PathVariable String followedUsername)
     {
-
+        System.out.println("P1");
         User followed = userRepository.findByUsername(followedUsername)
             .orElseThrow(() -> new IllegalArgumentException("User urmarit inexistent"));
 
         followingService.follow(followed.getId());
-        return ResponseEntity.ok().build();
+        System.out.println("P2")
+;        return ResponseEntity.ok().build();
     }
 
     // =======================

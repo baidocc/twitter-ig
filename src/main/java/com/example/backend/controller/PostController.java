@@ -37,6 +37,8 @@ public class PostController {
     public ResponseEntity<List<Post>> getAllMyPosts() {
         
         List<Post> posts = postService.getAllMyPosts();
+
+        System.out.println("POSTARI LUATE CU SUCCES");
         return ResponseEntity.ok(posts);
     }
 

@@ -36,8 +36,10 @@ public class ProfileController {
     @GetMapping("/me")
     public ResponseEntity<Profile> getMyProfile() {
         
-        
+          System.out.println("DA");
         Profile myProfile = profileService.getMyProfile();
+
+        System.out.println("PROFIL LUAT CU SUCCES");
         return ResponseEntity.ok(myProfile);
     }
 

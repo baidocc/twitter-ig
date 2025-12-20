@@ -55,6 +55,7 @@ public class AuthController {
                         request.getEmail(),
                         request.getPassword()
                 )
+               
         );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -63,6 +64,8 @@ public class AuthController {
                 .loadUserByUsername(request.getEmail());
 
         String token = jwtService.generateToken(userDetails);
+
+         System.out.println("LOGAT SUCCES");
 
         return ResponseEntity.ok(new LoginResponse(token));
     }
