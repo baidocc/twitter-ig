@@ -7,7 +7,9 @@ export const api = axios.create({
 // interceptor JWT (UNUL SINGUR)
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
+    console.log("🔥 INTERCEPTOR CALLED | url =", config.url);
+  console.log("🔥 INTERCEPTOR TOKEN =", token);
     if (token) {
       config.headers = config.headers || {};
       config.headers.Authorization = `Bearer ${token}`;
