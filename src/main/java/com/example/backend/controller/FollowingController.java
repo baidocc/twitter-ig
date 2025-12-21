@@ -68,31 +68,31 @@ public class FollowingController {
 //         return ResponseEntity.ok(result);
 //     }
 
-//     // =======================
-//     // LIST FOLLOWING
-//     // =======================
-//     @GetMapping("/{userId}/following")
-//     public ResponseEntity<List<Long>> getFollowing(@PathVariable Long userId) {
-//         List<Long> followingIds = followingService.getFollowing(userId)
-//                 .stream()
-//                 .map(user -> user.getId())
-//                 .toList();
+    // // =======================
+    // // LIST FOLLOWING
+    // // =======================
+    // @GetMapping("/{userId}/following")
+    // public ResponseEntity<List<Long>> getFollowing(@PathVariable Long userId) {
+    //     List<Long> followingIds = followingService.getFollowing()
+    //             .stream()
+    //             .map(user -> user.getId())
+    //             .toList();
 
-//         return ResponseEntity.ok(followingIds);
-//     }
+    //     return ResponseEntity.ok(followingIds);
+    // }
 
-//     // =======================
-//     // LIST FOLLOWERS
-//     // =======================
-//     @GetMapping("/{userId}/followers")
-//     public ResponseEntity<List<Long>> getFollowers(@PathVariable Long userId) {
-//         List<Long> followerIds = followingService.getFollowers(userId)
-//                 .stream()
-//                 .map(user -> user.getId())
-//                 .toList();
+    // // =======================
+    // // LIST FOLLOWERS
+    // // =======================
+    // @GetMapping("/{userId}/followers")
+    // public ResponseEntity<List<Long>> getFollowers(@PathVariable Long userId) {
+    //     List<Long> followerIds = followingService.getFollowers()
+    //             .stream()
+    //             .map(user -> user.getId())
+    //             .toList();
 
-//         return ResponseEntity.ok(followerIds);
-//     }
+    //     return ResponseEntity.ok(followerIds);
+    // }
 
 //     // =======================
 //     // COUNTS
